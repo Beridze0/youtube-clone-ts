@@ -1,9 +1,15 @@
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import HomePage from '../src/pages/HomePage'
+import Layout from "./components/layout/Layout"
 
-const App = () => {
+function App() {
   return (
     <Router>
-
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+      </Routes>
     </Router>
   )
 }
