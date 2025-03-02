@@ -1,6 +1,7 @@
-import { House, Inbox, Calendar, Search, Settings } from "lucide-react";
-import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger } from "../ui/sidebar";
+import { CircleUserRound, History, House, Layers2, Rss } from "lucide-react";
+import { Sidebar, SidebarContent, SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarTrigger } from "../ui/sidebar";
 import { NavLink } from "react-router-dom";
+import { CustomTrigger } from "../custom/CustomTrigger";
 
 // Define your items array
 const items = [
@@ -10,40 +11,42 @@ const items = [
     icon: House,
   },
   {
-    title: "Inbox",
+    title: "Shorts",
     url: "#",
-    icon: Inbox,
+    icon: Layers2,
   },
   {
-    title: "Calendar",
+    title: "Subscriptions",
     url: "#",
-    icon: Calendar,
+    icon: Rss,
   },
   {
-    title: "Search",
+    title: "You",
     url: "#",
-    icon: Search,
+    icon: CircleUserRound,
   },
   {
-    title: "Settings",
+    title: "History",
     url: "#",
-    icon: Settings,
+    icon: History,
   },
 ];
 
 const AppSidebar = () => {
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="icon" className="w-52">
+        <SidebarTrigger style={{ marginLeft: "0.55rem", marginTop: "0.7rem", marginBottom: "0.8rem", cursor: "pointer" }} />
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <NavLink to={item.url} >
-                      <item.icon className="ml-5"  />
-                      <span>{item.title}</span>
+                  <SidebarMenuButton  asChild>
+                    <NavLink to={item.url}>
+                      {/* Explicitly render the icon component and pass the size */}
+                      <item.icon className="mr-1" />
+                      <span className="text-sm">{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
