@@ -1,6 +1,7 @@
 import { CircleUserRound, Clapperboard, Flag, Flame, Gamepad2, HelpCircle, History, Home, Music, Newspaper, Rss, Settings } from "lucide-react";
 import { Sidebar, SidebarContent } from "../ui/sidebar";
 import NavMain from "./NavMain";
+import Explore from "./Explore";
 
 const data = {
     Main: [
@@ -88,6 +89,7 @@ const AppSidebar = () => {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <NavMain mainItems={data.Main} />
+        <Explore explore={data.Explore} />
       </SidebarContent>
     </Sidebar>
   );
