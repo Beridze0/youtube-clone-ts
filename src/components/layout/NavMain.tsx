@@ -1,7 +1,17 @@
 import { NavLink } from "react-router-dom"
 import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
 
-const NavMain = ({ mainItems }) => {
+interface MainItems {
+    name: string,
+    url: string,
+    icon: React.ElementType
+}
+
+interface MainProps {
+    mainItems: MainItems[]
+}
+
+const NavMain: React.FC<MainProps> = ({ mainItems }) => {
   return (
     <SidebarGroup>
             <SidebarGroupContent>

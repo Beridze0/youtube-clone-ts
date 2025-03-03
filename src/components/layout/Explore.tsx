@@ -14,7 +14,7 @@ interface ExploreProps{
 
 const Explore: React.FC<ExploreProps> = ({ explore }) => {
   return (
-    <SidebarGroup>
+    <SidebarGroup className="group-data-[collapsible=icon]:hidden">
         <SidebarGroupContent>
             <SidebarMenu>
                 {
