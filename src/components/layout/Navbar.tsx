@@ -1,4 +1,3 @@
-import { Input } from "../ui/input";
 import {
   Dialog,
   DialogContent,
@@ -8,20 +7,23 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import { CircleUserRound, EllipsisVertical } from "lucide-react";
+import { Input } from "../ui/input";
 
 const Navbar = () => {
   return (
-    <div className="flex items-center justify-between border border-accent px-5">
+    <div className="flex items-center justify-between border-b border-b-accent px-5">
         <div>
             <h1>VIDEOWEB</h1>
         </div>
         <Dialog>
         <DialogTrigger>
-            <Input placeholder="Search..." type="search" className="cursor-pointer w-[30rem]" />
+            <div className="cursor-pointer w-[30rem] border border-accent outline outline-none shadow-none rounded-md hover:bg-secondary ">
+                <Input className="border-none " placeholder="Search..." disabled />
+            </div>
         </DialogTrigger>
         <DialogContent>
+            <Input placeholder="Search for a video..." className="mt-5" />
             <DialogHeader>
-            <DialogTitle>What do you want to search?</DialogTitle>
             <DialogDescription>
                 Enter keywords related to the video you're looking for. You can
                 search by title, category, or creator name.
