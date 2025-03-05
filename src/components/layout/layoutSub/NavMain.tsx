@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../ui/sidebar"
+import { SidebarGroup, SidebarGroupContent, SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../../ui/sidebar"
 
 interface MainItems {
     name: string,

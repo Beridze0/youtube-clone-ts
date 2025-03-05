@@ -1,7 +1,7 @@
 import { CircleUserRound, Clapperboard, Flag, Flame, Gamepad2, HelpCircle, History, Home, Music, Newspaper, Rss, Settings } from "lucide-react";
 import { Sidebar, SidebarContent, SidebarTrigger } from "../ui/sidebar";
-import NavMain from "./NavMain";
-import Explore from "./Explore";
+import NavMain from "./layoutSub/NavMain";
+import Explore from "./layoutSub/Explore";
 
 const data = {
     Main: [
@@ -87,7 +87,7 @@ const data = {
 const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
-              <SidebarTrigger />
+      <SidebarTrigger />
 
       <SidebarContent>
         <NavMain mainItems={data.Main} />
