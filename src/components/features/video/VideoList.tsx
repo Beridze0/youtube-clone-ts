@@ -10,6 +10,12 @@ const VideoList = () => {
       <VideoCard />
       <VideoCard />
       <VideoCard />
+      <VideoCard />
+      <VideoCard />
+      <VideoCard />
+      <VideoCard />
+      <VideoCard />
+      <VideoCard />
     </div>
   );
 };
