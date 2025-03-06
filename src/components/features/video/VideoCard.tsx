@@ -16,12 +16,12 @@ const VideoCard = () => {
   return (
     <Card
       className={cn(
-        open ? "w-[315px]" : "w-[340px]",
+        open ? "w-[315px]" : "w-[345px]",
         "rounded-lg overflow-hidden shadow-md p-0 gap-2 transition-all"
       )}
     >
       {/* Video Thumbnail */}
-      <div className="relative w-full h-[220px]">
+      <div className={cn(open ? " h-[210px]" : " h-[230px]", "relative w-full")}>
         <img
           src={example}
           alt="Video Thumbnail"
@@ -34,7 +34,7 @@ const VideoCard = () => {
       </div>
 
       {/* Video Details */}
-      <CardContent className="px-2 pb-3 flex flex-col gap-1">
+      <CardContent className="px-2 pb-3 flex flex-col gap-1 cursor-pointer">
         <CardTitle className="text-base font-semibold leading-tight">
           How to Build a YouTube Clone with React & TypeScript
         </CardTitle>

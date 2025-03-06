@@ -4,7 +4,7 @@ const VideoList = () => {
 
 
   return (
-    <div className="grid grid-cols-4 gap-x-3 gap-y-5">
+    <div className="grid grid-cols-4 gap-5">
       <VideoCard />
       <VideoCard />
       <VideoCard />
