@@ -5,7 +5,7 @@ const VideoPage = () => {
   return (
     <div className="flex">
       {/* Video side */}
-      <div className="flex-1/2">
+      <div className="flex-1/2 flex flex-col gap-2.5">
         <div className="w-[850px] h-[550px] ">
           <img
             src={example}
@@ -24,14 +24,14 @@ const VideoPage = () => {
               <p className="text-xs text-muted-foreground">1M subscribers</p>
             </div>
           </div>
-          <div className="flex items-center">
-            <div className="flex items-center">
-              <ThumbsUp />
-              12.3K Likes
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1 border border-border p-2 rounded-xl cursor-pointer text-muted-foreground hover:text-primary ">
+              <ThumbsUp size={20} className="transition duration-200" />
+              <p className="text-sm">23.4K Likes</p>
             </div>
-            <div className="flex items-center">
-              <ThumbsDown />
-              13 Dislikes
+            <div className="flex items-center gap-1 border border-border p-2 rounded-xl cursor-pointer text-muted-foreground hover:text-primary ">
+              <ThumbsDown size={20} className="transition duration-200" />
+              <p className="text-sm">12 Dislikes</p>
             </div>
           </div>
         </div>
