@@ -4,7 +4,7 @@ import {
   EllipsisVertical,
   Video,
 } from "lucide-react";
-import DialogCard from "../custom/DialogCard";
+import DialogCard from "../features/dialogs/DialogCard";
 
 const Navbar = () => {
   return (

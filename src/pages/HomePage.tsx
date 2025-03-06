@@ -1,7 +1,10 @@
+import VideoList from "@/components/features/video/VideoList"
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div className="px-5 py-4 flex items-center justify-center">
+      <VideoList />
+    </div>
   )
 }
 

@@ -4,9 +4,9 @@ import {
   DialogContent,
   DialogDescription,
   DialogTrigger,
-} from "../ui/dialog";
+} from "../../ui/dialog";
 
-import { Input } from "../ui/input";
+import { Input } from "../../ui/input";
 
 const DialogCard = () => {
   return (
