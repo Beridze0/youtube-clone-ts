@@ -1,16 +1,17 @@
 import example from "@/assets/example.jpg";
+import RecommendedVideos from "@/components/features/video/RecommendedVideos";
 import { PersonStanding, ThumbsDown, ThumbsUp } from "lucide-react";
 
 const VideoPage = () => {
   return (
-    <div className="flex">
+    <div className="flex px-5 justify-between w-full gap-5">
       {/* Video side */}
       <div className="flex-1/2 flex flex-col gap-2.5">
         <div className="w-[850px] h-[550px] ">
           <img
             src={example}
             alt="example"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover rounded-xl"
           />
         </div>
         <h1 className="text-xl font-semibold">
@@ -36,9 +37,13 @@ const VideoPage = () => {
           </div>
         </div>
       </div>
-
-      <div className="flex-1/2">
-asdaskdnasodnasodnaosdasdasbdsa
+        {/* Recommended */}
+      <div className="flex-1/2 flex flex-col gap-2.5">
+        <RecommendedVideos />
+        <RecommendedVideos />
+        <RecommendedVideos />
+        <RecommendedVideos />
+        <RecommendedVideos />
       </div>
     </div>
   );

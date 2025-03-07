@@ -12,7 +12,7 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="flex items-center justify-between gap-4 py-3 px-5">
+    <div className="flex items-center justify-between gap-4 py-3 px-5 mb-3">
       <div className="flex items-center gap-1.5 cursor-pointer" onClick={()=>navigate('/')}>
         <h1 className="text-base sm:text-xl font-bold">StreamSphere</h1>
         <Radio size={30} />
