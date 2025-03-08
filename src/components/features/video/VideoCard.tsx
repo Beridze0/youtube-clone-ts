@@ -11,23 +11,23 @@ import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
 
-const VideoCard = () => {
+const VideoCard = ({ videos }) => {
   const { open } = useSidebar();
 
   return (
     <NavLink to='/video/1'>
       <Card
         className={cn(
-          open ? "w-[315px]" : "w-[345px]",
-          "rounded-lg overflow-hidden shadow-md p-0 gap-2 transition-all"
+          open ? "w-[317px]" : "w-[345px]",
+          "h-[305px] rounded-lg overflow-hidden shadow-md p-0 gap-2 transition-all"
         )}
       >
         {/* Video Thumbnail */}
         <div
-          className={cn(open ? " h-[210px]" : " h-[230px]", "relative w-full")}
+          className={cn(open ? "min-h-[210px]" : "min-h-[230px]", "relative w-full")}
         >
           <img
-            src={example}
+            src={videos.snippet.thumbnails.maxres.url}
             alt="Video Thumbnail"
             className="w-full h-full object-fill"
           />
@@ -39,11 +39,11 @@ const VideoCard = () => {
 
         {/* Video Details */}
         <CardContent className="px-2 pb-3 flex flex-col gap-1 cursor-pointer">
-          <CardTitle className="text-base font-semibold leading-tight">
-            How to Build a YouTube Clone with React & TypeScript
+          <CardTitle className="text-sm font-semibold leading-tight">
+            {videos.snippet.localized.title.slice(0,100)}
           </CardTitle>
-          <CardDescription className="text-gray-500 text-xs mt-1">
-            CodeWithMe • 1.2M views • 2 days ago
+          <CardDescription className="text-gray-500 text-[0.7rem] mt-1">
+            {videos.snippet.channelTitle} • 1.2M views • 2 days ago
           </CardDescription>
         </CardContent>
       </Card>
