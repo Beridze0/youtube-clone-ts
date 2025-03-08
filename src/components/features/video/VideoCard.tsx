@@ -10,32 +10,16 @@ import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
 
-
 interface VideoThumbnail {
   url: string;
-  width: number;
-  height: number;
 }
 
 interface VideoSnippet {
-  categoryId: string;
-  channelId: string;
   channelTitle: string;
-  description: string;
-  liveBroadcastContent: string;
-  localized: {
-    description: string;
-    title: string;
-  };
-  publishedAt: string;
-  thumbnails: {
-    default: VideoThumbnail;
-    high: VideoThumbnail;
-    maxres: VideoThumbnail;
-    medium: VideoThumbnail;
-    standard: VideoThumbnail;
-  };
   title: string;
+  thumbnails: {
+    maxres: VideoThumbnail;
+  };
 }
 
 interface VideoItem {
@@ -50,7 +34,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
   const { open } = useSidebar();
 
   return (
-    <NavLink to='/video/1'>
+    <NavLink to="/video/1">
       <Card
         className={cn(
           open ? "w-[317px]" : "w-[345px]",
@@ -58,9 +42,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
         )}
       >
         {/* Video Thumbnail */}
-        <div
-          className={cn(open ? "min-h-[210px]" : "min-h-[230px]", "relative w-full")}
-        >
+        <div className={cn(open ? "min-h-[210px]" : "min-h-[230px]", "relative w-full")}>
           <img
             src={videos.snippet.thumbnails.maxres.url}
             alt="Video Thumbnail"
@@ -75,7 +57,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
         {/* Video Details */}
         <CardContent className="px-2 pb-3 flex flex-col gap-1 cursor-pointer">
           <CardTitle className="text-sm font-semibold leading-tight">
-            {videos.snippet.localized.title.slice(0,100)}
+            {videos.snippet.title.slice(0, 100)}
           </CardTitle>
           <CardDescription className="text-gray-500 text-[0.7rem] mt-1">
             {videos.snippet.channelTitle} • 1.2M views • 2 days ago

@@ -1,27 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchVideos } from "@/redux/videoSlice";
+import { RootState, AppDispatch } from "@/redux/store";
 import VideoCard from "./VideoCard";
 
-
 const VideoList = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { videos, loading, error } = useSelector((state: RootState) => state.videos);
 
-  const API_KEY = import.meta.env.VITE_API_KEY
-  const [data, setData] = useState({})
-  
-  useEffect(()=>{
-    fetch(` https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=35&regionCode=US&videoCategoryId=0&key=${API_KEY}`)
-    .then(res => res.json())
-    .then(data => setData(data.items)
-    )
-  },[API_KEY])
+  useEffect(() => {
+    dispatch(fetchVideos());
+  }, [dispatch]);
 
-  console.log(data);
-  
-  
+  if (loading) return <p>Loading videos...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="grid grid-cols-4 gap-5">
-      {data.map((item, index)=>(
-          <VideoCard key={index} videos={item} />
+      {videos.map((item, index) => (
+        <VideoCard key={index} videos={item} />
       ))}
     </div>
   );
