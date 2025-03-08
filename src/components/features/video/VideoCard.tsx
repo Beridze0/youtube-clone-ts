@@ -32,7 +32,7 @@ interface VideoCardProps {
 
 const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
   const { open } = useSidebar();
-
+  
   return (
     <NavLink to="/video/1">
       <Card
@@ -44,7 +44,7 @@ const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
         {/* Video Thumbnail */}
         <div className={cn(open ? "min-h-[210px]" : "min-h-[230px]", "relative w-full")}>
           <img
-            src={videos.snippet.thumbnails.maxres.url}
+            src={videos.snippet.thumbnails.maxres?.url}
             alt="Video Thumbnail"
             className="w-full h-full object-fill rounded-lg"
           />
