@@ -6,12 +6,47 @@ import {
 } from "@/components/ui/card";
 
 import { PlayCircle } from "lucide-react";
-import example from "@/assets/example.jpg";
 import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
 
-const VideoCard = ({ videos }) => {
+
+interface VideoThumbnail {
+  url: string;
+  width: number;
+  height: number;
+}
+
+interface VideoSnippet {
+  categoryId: string;
+  channelId: string;
+  channelTitle: string;
+  description: string;
+  liveBroadcastContent: string;
+  localized: {
+    description: string;
+    title: string;
+  };
+  publishedAt: string;
+  thumbnails: {
+    default: VideoThumbnail;
+    high: VideoThumbnail;
+    maxres: VideoThumbnail;
+    medium: VideoThumbnail;
+    standard: VideoThumbnail;
+  };
+  title: string;
+}
+
+interface VideoItem {
+  snippet: VideoSnippet;
+}
+
+interface VideoCardProps {
+  videos: VideoItem;
+}
+
+const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
   const { open } = useSidebar();
 
   return (
@@ -19,7 +54,7 @@ const VideoCard = ({ videos }) => {
       <Card
         className={cn(
           open ? "w-[317px]" : "w-[345px]",
-          "h-[305px] rounded-lg overflow-hidden shadow-md p-0 gap-2 transition-all"
+          "h-[305px] rounded-lg overflow-hidden shadow-none border-none p-0 gap-[0.45rem] transition-all"
         )}
       >
         {/* Video Thumbnail */}
@@ -29,10 +64,10 @@ const VideoCard = ({ videos }) => {
           <img
             src={videos.snippet.thumbnails.maxres.url}
             alt="Video Thumbnail"
-            className="w-full h-full object-fill"
+            className="w-full h-full object-fill rounded-lg"
           />
           {/* Play Icon Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 hover:opacity-100 transition-opacity cursor-pointer">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/30 opacity-0 rounded-lg hover:opacity-100 transition-opacity cursor-pointer">
             <PlayCircle className="text-white w-12 h-12" />
           </div>
         </div>
