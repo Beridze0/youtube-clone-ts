@@ -9,6 +9,9 @@ interface VideoSnippet {
   title: string;
   description: string;
   publishedAt: string
+  localized: {
+    title: string;
+  }
   thumbnails: {
     maxres: { url: string };
   };

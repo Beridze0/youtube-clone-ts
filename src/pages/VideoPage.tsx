@@ -17,7 +17,6 @@ const VideoPage = () => {
     dispatch(fetchVideos())
   },[dispatch])
 
-  console.log(videos);
 
   if (loading) return <p>Loading please wait...</p>;
   if (error) return <p>{error}</p>;
@@ -73,14 +72,11 @@ const VideoPage = () => {
 
       {/* Recommended */}
       <div className="flex-1/2 flex flex-col gap-2.5">
-        <RecommendedVideos />
-        <RecommendedVideos />
-        <RecommendedVideos />
-        <RecommendedVideos />
-        <RecommendedVideos />
-        <RecommendedVideos />
-        <RecommendedVideos />
-        <RecommendedVideos />
+        {
+          videos?.slice(0,7).map((item, index)=>(
+            <RecommendedVideos key={index} videoDetails={item} />
+          ))
+        }
       </div>
     </div>
   );
