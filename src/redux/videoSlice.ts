@@ -7,6 +7,8 @@ const BASE_URL = "https://youtube.googleapis.com/youtube/v3/videos";
 interface VideoSnippet {
   channelTitle: string;
   title: string;
+  description: string;
+  publishedAt: string
   thumbnails: {
     maxres: { url: string };
   };
