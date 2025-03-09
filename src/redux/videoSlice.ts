@@ -4,7 +4,6 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 const API_KEY = import.meta.env.VITE_API_KEY;
 const BASE_URL = "https://youtube.googleapis.com/youtube/v3/videos";
 
-// Define the state type
 interface VideoSnippet {
   channelTitle: string;
   title: string;
@@ -23,15 +22,13 @@ interface VideoState {
   error: string | null;
 }
 
-// Initial state
 const initialState: VideoState = {
   videos: [],
   loading: false,
   error: null,
 };
 
-// Async thunk using Axios
-export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
+const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
   const response = await axios.get(BASE_URL, {
     params: {
       part: "snippet",
@@ -45,26 +42,27 @@ export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
   return response.data.items;
 });
 
-// Create the slice
 const videoSlice = createSlice({
   name: "videos",
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
+  extraReducers(builder) {
     builder
       .addCase(fetchVideos.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchVideos.fulfilled, (state, action: PayloadAction<VideoItem[]>) => {
-        state.videos = action.payload;
+      .addCase(
+        fetchVideos.fulfilled,
+        (state, action: PayloadAction<VideoItem[]>) => {
+          state.videos = action.payload;
+          state.loading = false;
+        }
+      ).addCase(fetchVideos.rejected, (state, action)=> {
         state.loading = false;
+        state.error = action.error.message || "Failed to fetch videos"
       })
-      .addCase(fetchVideos.rejected, (state, action) => {
-        state.loading = false;
-        state.error = action.error.message || "Failed to fetch videos";
-      });
   },
 });
 
-export default videoSlice.reducer;
+export default videoSlice.reducer
