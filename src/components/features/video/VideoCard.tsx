@@ -23,6 +23,7 @@ interface VideoSnippet {
 }
 
 interface VideoItem {
+  id: string;
   snippet: VideoSnippet;
 }
 
@@ -33,8 +34,10 @@ interface VideoCardProps {
 const VideoCard: React.FC<VideoCardProps> = ({ videos }) => {
   const { open } = useSidebar();
   
+  
+
   return (
-    <NavLink to="/video/1">
+    <NavLink to={`/video/${videos.id}`}>
       <Card
         className={cn(
           open ? "w-[317px]" : "w-[345px]",

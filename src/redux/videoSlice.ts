@@ -13,6 +13,7 @@ interface VideoSnippet {
 }
 
 interface VideoItem {
+  id: string;
   snippet: VideoSnippet;
 }
 
@@ -28,7 +29,7 @@ const initialState: VideoState = {
   error: null,
 };
 
-const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
+export const fetchVideos = createAsyncThunk("videos/fetchVideos", async () => {
   const response = await axios.get(BASE_URL, {
     params: {
       part: "snippet",
@@ -58,11 +59,12 @@ const videoSlice = createSlice({
           state.videos = action.payload;
           state.loading = false;
         }
-      ).addCase(fetchVideos.rejected, (state, action)=> {
+      )
+      .addCase(fetchVideos.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || "Failed to fetch videos"
-      })
+        state.error = action.error.message || "Failed to fetch videos";
+      });
   },
 });
 
-export default videoSlice.reducer
+export default videoSlice.reducer;
