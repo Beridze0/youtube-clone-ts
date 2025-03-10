@@ -12,7 +12,7 @@ const DialogCard = () => {
   return (
     <Dialog>
       <DialogTrigger>
-        <div className="flex items-center pr-2.5 cursor-pointer sm:w-[30rem] w-[20rem] border border-border outline outline-none shadow-none rounded-md hover:bg-secondary ">
+        <div className="flex items-center pr-2.5 cursor-pointer sm:w-[30rem] w-[20rem] border border-border outline outline-none shadow-none rounded-2xl hover:bg-secondary ">
           <Input className="border-none outline-none" placeholder="Search..." disabled />
           <Search size={21} />
         </div>
