@@ -31,7 +31,7 @@ const initialState: VideoState = {
   error: null,
 };
 
-export const fetchVideos = createAsyncThunk(
+export const fetchVideosForSearch = createAsyncThunk(
   "videos/fetchVideos",
   async (query: string) => {
     localStorage.setItem("searchQuery", query);
@@ -58,18 +58,18 @@ const videoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchVideos.pending, (state) => {
+      .addCase(fetchVideosForSearch.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
       .addCase(
-        fetchVideos.fulfilled,
+        fetchVideosForSearch.fulfilled,
         (state, action: PayloadAction<VideoItem[]>) => {
           state.videos = action.payload;
           state.loading = false;
         }
       )
-      .addCase(fetchVideos.rejected, (state, action) => {
+      .addCase(fetchVideosForSearch.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || "Failed to fetch videos";
       });
