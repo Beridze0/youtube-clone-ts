@@ -20,17 +20,16 @@ interface NavMainProps {
 const NavMain: React.FC<NavMainProps> = ({ mainLinks }) => {
   return (
     <SidebarGroup>
-        {}
       <SidebarGroupContent>
         <SidebarMenu>
           <SidebarMenuItem>
-            {mainLinks.map((link) => (
-              <SidebarMenuButton>
+            {mainLinks.map((link, index) => (
+              <SidebarMenuButton key={index} className="mt-1 cursor-pointer">
                 <NavLink
                   to={link.url}
-                  className="flex shrink-0 items-center gap-2 cursor-pointer"
+                  className="flex shrink-0 items-center gap-2 "
                 >
-                  <link.icon size={18} />
+                  <link.icon size={19} />
                   <p className="text-[0.9rem]">{link.name}</p>
                 </NavLink>
               </SidebarMenuButton>

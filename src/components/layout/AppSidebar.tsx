@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent } from "../ui/sidebar";
+import { Sidebar, SidebarContent, SidebarHeader } from "../ui/sidebar";
 import {
   Home,
   PlaySquare,
@@ -10,6 +10,7 @@ import {
   Settings,
 } from "lucide-react";
 import NavMain from "./NavMain";
+import NavRest from "./NavRest";
 
 interface SidebarLinksArray {
   name: string;
@@ -42,6 +43,7 @@ const AppSidebar = () => {
     <Sidebar collapsible="icon">
       <SidebarContent>
         <NavMain mainLinks={sidebarLinks.main} />
+        <NavRest restLinks={sidebarLinks.rest} />
       </SidebarContent>
     </Sidebar>
   );
