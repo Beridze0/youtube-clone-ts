@@ -1,10 +1,16 @@
-import { Button } from "./components/ui/button"
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom' 
+import HomePage from './pages/HomePage'
+import Layout from './components/layout/Layout'
 
 const App = () => {
   return (
-    <div>
-      <Button>Click</Button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Layout />}>
+          <Route index element={<HomePage />} />
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 
