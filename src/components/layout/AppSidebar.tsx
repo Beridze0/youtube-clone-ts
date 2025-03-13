@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent } from "../ui/sidebar";
+import { Sidebar, SidebarContent, SidebarTrigger } from "../ui/sidebar";
 import {
   Home,
   PlaySquare,
@@ -41,6 +41,8 @@ const sidebarLinks: SidebarLinks = {
 const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
+                    <SidebarTrigger className="cursor-pointer ml-[0.67rem] mt-3" />
+
       <SidebarContent>
         <NavMain mainLinks={sidebarLinks.main} />
         <NavRest restLinks={sidebarLinks.rest} />

@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <SidebarProvider>
         <AppSidebar />
-        <div>
+        <div className="w-full">
           <Navbar />
           <Outlet />
         </div>
