@@ -1,4 +1,4 @@
-import { Sidebar, SidebarContent, SidebarHeader } from "../ui/sidebar";
+import { Sidebar, SidebarContent } from "../ui/sidebar";
 import {
   Home,
   PlaySquare,
