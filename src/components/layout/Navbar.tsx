@@ -4,7 +4,7 @@ import { ModeToggle } from "../mode-toggle";
 
 const Navbar = () => {
   return (
-    <div className="w-full px-5 py-3 border-b flex items-center justify-between">
+    <div className="w-full px-5 py-3 border-b border-dotted flex items-center justify-between mb-4">
       <div className="flex items-center gap-5">
         <h1 className="text-2xl font-semibold">YOUTUBE</h1>
         <div className="flex items-center gap-3 text-[0.84rem]">

@@ -4,8 +4,8 @@ const VideoCard = () => {
   return (
     <Card className="p-0 rounded-none border-none bg-transparent shadow-none">
       <CardContent className="p-0 ">
-        <div className="w-[310px] h-[180px]">
-          <img src={example} alt="Image" className="w-full h-full rounded-md" />
+        <div className="w-[315px] h-[180px]">
+          <img src={example} alt="Image" className="w-full h-full rounded-md object-cover" />
         </div>
         <div className="px-2 mt-1.5">
             <p className="font-semibold">Learn React for Beginners</p>
