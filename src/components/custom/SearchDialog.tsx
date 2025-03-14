@@ -5,7 +5,7 @@ const SearchDialog = () => {
   return (
     <Dialog>
       <DialogTrigger>
-        <div className="flex items-center border w-[230px] py-[0.35rem] px-2 rounded-lg gap-1.5 text-muted-foreground hover:text-primary hover:bg-secondary cursor-pointer transition-all duration-200">
+        <div className="flex items-center border w-[250px] py-[0.25rem] px-2 rounded-md gap-1.5 text-muted-foreground hover:text-primary hover:bg-secondary cursor-pointer transition-all duration-200">
           <p className="text-[0.84rem] ml-1.5">Search for video...</p>
         </div>
       </DialogTrigger>
