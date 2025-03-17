@@ -1,10 +1,15 @@
 import { Card, CardContent } from "@/components/ui/card";
 import example from "@/assets/example.jpg";
+import { useSidebar } from "../ui/sidebar";
+import { cn } from "@/lib/utils";
 const VideoCard = () => {
+
+  const { open } = useSidebar()
+
   return (
-    <Card className="p-0 rounded-none border-none bg-transparent shadow-none">
+    <Card className="p-0 rounded-none border-none w-fit bg-transparent shadow-none">
       <CardContent className="p-0 ">
-        <div className="w-[315px] h-[180px]">
+        <div className={cn("w-[338px] h-[195px]", open && "w-[310px] h-[180px]")}>
           <img src={example} alt="Image" className="w-full h-full rounded-md object-cover" />
         </div>
         <div className="px-2 mt-1.5">

@@ -2,7 +2,7 @@ import VideoList from "@/components/custom/VideoList"
 
 const HomePage = () => {
   return (
-    <div>
+    <div className="">
         <VideoList />
     </div>
   )
