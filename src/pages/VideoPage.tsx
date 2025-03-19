@@ -1,15 +1,20 @@
 import example from "@/assets/example.jpg";
+import { useSidebar } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 const VideoPage = () => {
+
+  const {open} = useSidebar()
+
   return (
-    <div className="px-6 flex">
+    <div className="px-6 flex gap-4">
       {/* left side */}
       <div className="flex-1/2">
-        <div className="w-[770px] h-[450px]">
+        <div className={cn("w-[960px] h-[450px]", open && "w-[826px]")}>
           <img
             src={example}
             alt=""
-            className="w-full h-full object-cover rounded-md"
+            className="w-full h-full object-cover rounded-xl"
           />
         </div>
         <div className="flex flex-col gap-2">
@@ -28,7 +33,7 @@ const VideoPage = () => {
               <p className="text-xs">1.13M subscribers</p>
             </div>
           </div>
-          <div className="border rounded-xl p-3 mt-2 bg-accent">
+          <div className="rounded-xl p-3 mt-2 bg-card text-sm flex flex-col gap-0.5">
             <p>
               Learn React.js in this beginner-friendly tutorial! 🚀 We'll cover
               the basics and build a simple project together.
@@ -56,7 +61,16 @@ const VideoPage = () => {
           </div>
         </div>
       </div>
+      {/* right */}
       <div className="flex-1/2">
+          <div className="flex shrink-0 gap-2 ">
+            <img src={example} alt="" className="w-[195px] h-[110px] rounded-xl object-cover shrink-0" />
+            <div className="flex flex-col">
+              <h1 className="text-[0.85rem] font-bold my-1">Laravel Livewire CRUD with File Upload - Livewire Form</h1>
+              <p className="text-muted-foreground text-xs">Tony Xhepa</p>
+              <p className="text-muted-foreground text-xs">23 views &bull; 34 minutes ago</p>
+            </div>
+          </div>
       </div>
     </div>
   );
