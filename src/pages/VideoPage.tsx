@@ -1,4 +1,5 @@
 import example from "@/assets/example.jpg";
+import Recommended from "@/components/custom/Recommended";
 import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
@@ -62,15 +63,12 @@ const VideoPage = () => {
         </div>
       </div>
       {/* right */}
-      <div className="flex-1/2">
-          <div className="flex shrink-0 gap-2 ">
-            <img src={example} alt="" className="w-[195px] h-[110px] rounded-xl object-cover shrink-0" />
-            <div className="flex flex-col">
-              <h1 className="text-[0.85rem] font-bold my-1">Laravel Livewire CRUD with File Upload - Livewire Form</h1>
-              <p className="text-muted-foreground text-xs">Tony Xhepa</p>
-              <p className="text-muted-foreground text-xs">23 views &bull; 34 minutes ago</p>
-            </div>
-          </div>
+      <div className="flex-1/2 flex flex-col gap-2">
+          <Recommended />
+          <Recommended />
+          <Recommended />
+          <Recommended />
+          <Recommended />
       </div>
     </div>
   );
