@@ -1,6 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Load previous search history from localStorage
+const initialSearchTerm: string[] = JSON.parse(localStorage.getItem("searchHistory") || "[]");
+
+// Async thunk to fetch search results
 export const fetchSearchResults = createAsyncThunk(
   "search/fetchResults",
   async (query: string) => {
@@ -11,20 +15,22 @@ export const fetchSearchResults = createAsyncThunk(
   }
 );
 
-const initialSearchTerm = localStorage.getItem("searchTerm") || "";
-
 const searchSlice = createSlice({
   name: "search",
   initialState: {
     searchTerm: initialSearchTerm,
-    results: [],
+    results: [], 
     loading: false,
     error: null as string | null,
   },
   reducers: {
     setSearchTerm: (state, action) => {
-      state.searchTerm = action.payload;
-      localStorage.setItem("searchterm", action.payload);
+      const newHistory = [action.payload, ...state.searchTerm.filter(term => term !== action.payload)];
+
+      if (newHistory.length > 10) newHistory.pop();
+
+      state.searchTerm = newHistory;
+      localStorage.setItem("searchHistory", JSON.stringify(newHistory));
     },
   },
   extraReducers: (builder) => {
@@ -44,6 +50,5 @@ const searchSlice = createSlice({
   },
 });
 
-
-export const { setSearchTerm } = searchSlice.actions
-export default searchSlice.reducer
+export const { setSearchTerm } = searchSlice.actions;
+export default searchSlice.reducer;
