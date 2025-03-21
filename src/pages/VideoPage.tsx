@@ -34,6 +34,10 @@ const VideoPage = () => {
               <p className="text-xs">1.13M subscribers</p>
             </div>
           </div>
+          <div>
+            <button className="border px-4 py-1.5 rounded-2xl text-muted-foreground hover:text-primary cursor-pointer duration-200">Likes</button>
+            <button className="border px-4 py-1.5 rounded-2xl text-muted-foreground hover:text-primary cursor-pointer duration-200">Dislikes</button>
+          </div>
           <div className="rounded-xl p-3 mt-2 bg-card text-sm flex flex-col gap-0.5">
             <p>
               Learn React.js in this beginner-friendly tutorial! 🚀 We'll cover
@@ -60,7 +64,10 @@ const VideoPage = () => {
               🔔 Don't forget to like, share, and subscribe for more content!
             </p>
           </div>
+          
         </div>
+        
+
       </div>
       {/* right */}
       <div className="flex-1/2 flex flex-col gap-2">
