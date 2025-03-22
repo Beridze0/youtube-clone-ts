@@ -4,8 +4,7 @@ import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 
 const VideoPage = () => {
-
-  const {open} = useSidebar()
+  const { open } = useSidebar();
 
   return (
     <div className="px-6 flex gap-4">
@@ -22,21 +21,26 @@ const VideoPage = () => {
           <h1 className="text-xl font-bold mt-2">
             Build Complete Website Like YouTube In React JS 2025
           </h1>
-
-          <div className="flex items-center gap-2">
-            <img
-              src={example}
-              alt=""
-              className="w-10 h-10 rounded-full object-cover"
-            />
-            <div>
-              <p className="font-bold">GreatStack</p>
-              <p className="text-xs">1.13M subscribers</p>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <img
+                src={example}
+                alt=""
+                className="w-10 h-10 rounded-full object-cover"
+              />
+              <div>
+                <p className="font-bold">GreatStack</p>
+                <p className="text-xs">1.13M subscribers</p>
+              </div>
             </div>
-          </div>
-          <div>
-            <button className="border px-4 py-1.5 rounded-2xl text-muted-foreground hover:text-primary cursor-pointer duration-200">Likes</button>
-            <button className="border px-4 py-1.5 rounded-2xl text-muted-foreground hover:text-primary cursor-pointer duration-200">Dislikes</button>
+            <div className="flex gap-1.5">
+              <button className="border px-4 py-1 rounded-2xl text-muted-foreground hover:text-primary cursor-pointer duration-200">
+                Like
+              </button>
+              <button className="border px-4 py-1 rounded-2xl text-muted-foreground hover:text-primary cursor-pointer duration-200">
+                Dislike
+              </button>
+            </div>
           </div>
           <div className="rounded-xl p-3 mt-2 bg-card text-sm flex flex-col gap-0.5">
             <p>
@@ -64,18 +68,15 @@ const VideoPage = () => {
               🔔 Don't forget to like, share, and subscribe for more content!
             </p>
           </div>
-          
         </div>
-        
-
       </div>
       {/* right */}
       <div className="flex-1/2 flex flex-col gap-2">
-          <Recommended />
-          <Recommended />
-          <Recommended />
-          <Recommended />
-          <Recommended />
+        <Recommended />
+        <Recommended />
+        <Recommended />
+        <Recommended />
+        <Recommended />
       </div>
     </div>
   );
