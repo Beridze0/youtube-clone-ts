@@ -3,11 +3,11 @@ import axios from "axios";
 
 const API_URL = "https://www.googleapis.com/youtube/v3/search";
 
-interface StateValues{
-    searchArray: string[]
-    videos: any[]
-    loading: boolean
-    error: string | null
+interface StateValues {
+  searchArray: string[];
+  videos: any[];
+  loading: boolean;
+  error: string | null;
 }
 
 const initialState: StateValues = {
@@ -29,9 +29,9 @@ export const fetchVideos = createAsyncThunk(
           key: "YOUR_YOUTUBE_API_KEY",
         },
       });
-      return response.data.items
+      return response.data.items;
     } catch (error: any) {
-        return rejectWithValue(error.response?.data?.message || "Failed to fetch videos")
+      return rejectWithValue(error.response?.data?.message || "Failed to fetch videos");
     }
   }
 );
@@ -40,27 +40,26 @@ const searchSlice = createSlice({
   name: "search",
   initialState,
   reducers: {
-    addSearchQuery: (state, action) => {
-        state.searchArray.push(action.payload);
-      }
-      
+    addSearchQuery: (state, action: PayloadAction<string>) => {
+      state.searchArray.push(action.payload);
+    },
   },
-  extraReducers(builder) {
-      builder
-      .addCase(fetchVideos.pending, (state)=>{
-        state.loading = true
-        state.error = null
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchVideos.pending, (state) => {
+        state.loading = true;
+        state.error = null;
       })
-      .addCase(fetchVideos.fulfilled, (state, action)=>{
-          state.loading = false
-        state.searchValue = action.payload
+      .addCase(fetchVideos.fulfilled, (state, action) => {
+        state.loading = false;
+        state.videos = action.payload;
       })
       .addCase(fetchVideos.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string; 
+        state.error = action.payload as string;
       });
   },
 });
 
-
+export const { addSearchQuery } = searchSlice.actions;
 export default searchSlice.reducer;
