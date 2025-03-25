@@ -1,11 +1,18 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_URL = "https://www.googleapis.com/youtube/v3/search";
 
-const initialState = {
+interface StateValues{
+    searchArray: string[]
+    videos: any[]
+    loading: boolean
+    error: string | null
+}
+
+const initialState: StateValues = {
   searchArray: [],
-  searchValue: "",
+  videos: [],
   loading: false,
   error: null,
 };
@@ -32,5 +39,28 @@ export const fetchVideos = createAsyncThunk(
 const searchSlice = createSlice({
   name: "search",
   initialState,
-  reducers: {},
+  reducers: {
+    addSearchQuery: (state, action) => {
+        state.searchArray.push(action.payload);
+      }
+      
+  },
+  extraReducers(builder) {
+      builder
+      .addCase(fetchVideos.pending, (state)=>{
+        state.loading = true
+        state.error = null
+      })
+      .addCase(fetchVideos.fulfilled, (state, action)=>{
+          state.loading = false
+        state.searchValue = action.payload
+      })
+      .addCase(fetchVideos.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload as string; 
+      });
+  },
 });
+
+
+export default searchSlice.reducer;
