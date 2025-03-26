@@ -5,7 +5,6 @@ const API_URL = "https://www.googleapis.com/youtube/v3/search";
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 console.log("API Key:", API_KEY);
 
-
 interface StateValues {
   searchArray: string[];
   videos: any[];
@@ -15,7 +14,7 @@ interface StateValues {
 
 const initialState: StateValues = {
   searchArray: [],
-  videos: [],
+  videos: JSON.parse(localStorage.getItem("search-history") || "[]"),
   loading: false,
   error: null,
 };
@@ -35,7 +34,9 @@ export const fetchVideos = createAsyncThunk(
       });
       return response.data.items;
     } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || "Failed to fetch videos");
+      return rejectWithValue(
+        error.response?.data?.message || "Failed to fetch videos"
+      );
     }
   }
 );
@@ -45,7 +46,15 @@ const searchSlice = createSlice({
   initialState,
   reducers: {
     addSearchQuery: (state, action: PayloadAction<string>) => {
-      state.searchArray.push(action.payload);
+      const query = action.payload;
+
+      if (!state.searchArray.includes(query)) {
+        state.searchArray.push(query);
+        localStorage.setItem(
+          "search-history",
+          JSON.stringify(state.searchArray)
+        );
+      }
     },
   },
   extraReducers: (builder) => {
