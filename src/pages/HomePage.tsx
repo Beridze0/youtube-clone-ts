@@ -8,7 +8,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(addSearchQuery("trending"));
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="">

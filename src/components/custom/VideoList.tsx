@@ -3,16 +3,21 @@ import VideoCard from "./VideoCard";
 import { AppDispatch, RootState } from "@/redux/store";
 import { useEffect } from "react";
 import { fetchVideos } from "@/redux/searchSlice";
+import { useLocation } from "react-router-dom";
 
 const VideoList = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { videos, loading, error, searchArray } = useSelector((state: RootState) => state.search);
 
+  const location = useLocation();
+
   useEffect(() => {
-    if (searchArray.length > 0) {
+    if (location.pathname === "/") {
+      dispatch(fetchVideos("trending"));
+    } else if (searchArray.length > 0) {
       dispatch(fetchVideos(searchArray[searchArray.length - 1]));
     }
-  }, [searchArray, dispatch]);
+  }, [dispatch, location.pathname, searchArray]);
 
   return (
     <div className="p-4">

@@ -21,10 +21,10 @@ const SearchDialog = () => {
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (input.trim() === "") return;
-
+  
     dispatch(addSearchQuery(input));
-    dispatch(fetchVideos(input)); 
-    navigate(`/search/${input}`)
+    dispatch(fetchVideos(input));
+    navigate(`/search/${input}`); 
     setInput("");
   };
 

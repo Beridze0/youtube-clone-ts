@@ -38,7 +38,7 @@ const VideoCard: React.FC<VideoCardProps> = ( {video} ) => {
             <img src={video.snippet.thumbnails.high.url} alt="Image" className="w-full h-full rounded-md object-cover" />
           </div>
           <div className="px-2 mt-1.5">
-              <p className="font-semibold">{video.snippet.title}</p>
+              <p className="font-semibold text-sm">{video.snippet.title}</p>
               <p className="text-[0.79rem]">1.5M views &bull; {video.snippet.publishedAt}</p>
               <p className="text-[0.79rem]">{video.snippet.channelTitle}</p>
           </div>
