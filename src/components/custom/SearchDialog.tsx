@@ -10,11 +10,13 @@ import { AppDispatch, RootState } from "@/redux/store";
 import { History } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const SearchDialog = () => {
   const [input, setInput] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const searchArray = useSelector((state: RootState) => state.search.searchArray);
+  const navigate = useNavigate()
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -22,8 +24,7 @@ const SearchDialog = () => {
 
     dispatch(addSearchQuery(input));
     dispatch(fetchVideos(input)); 
-
-    
+    navigate(`/search/${input}`)
     setInput("");
   };
 

@@ -2,6 +2,9 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const API_URL = "https://www.googleapis.com/youtube/v3/search";
+const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
+console.log("API Key:", API_KEY);
+
 
 interface StateValues {
   searchArray: string[];
@@ -24,9 +27,10 @@ export const fetchVideos = createAsyncThunk(
       const response = await axios.get(API_URL, {
         params: {
           q: query,
+          regionCode: "US",
           part: "snippet",
-          maxResults: 10,
-          key: "YOUR_YOUTUBE_API_KEY",
+          maxResults: 30,
+          key: API_KEY,
         },
       });
       return response.data.items;
